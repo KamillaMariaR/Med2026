@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Estudos - Rumo à Medicina 2026</title>
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Link para Ícones (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fa-solid fa-rocket"></i> Projeto Medicina 2026</h1>
+            <p>Foco total no ENEM, UEM e UFPR | Início: 02/01/2026</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('painel')"><i class="fa-solid fa-chart-pie"></i> Painel de
+                Controle</button>
+            <button class="tab" onclick="showTab('semanal')"><i class="fa-solid fa-calendar-week"></i> Cronograma
+                Semanal</button>
+            <button class="tab" onclick="showTab('progresso')"><i class="fa-solid fa-tasks"></i> Progresso por
+                Matéria</button>
+            <button class="tab" onclick="showTab('simulados')"><i class="fa-solid fa-file-signature"></i> Simulados e
+                Redações</button>
+            <button class="tab" onclick="showTab('leituras')"><i class="fa-solid fa-book-open"></i> Leituras e
+                Repertório</button>
+            <button class="tab" onclick="showTab('recursos')"><i class="fa-solid fa-link"></i> Recursos</button>
+            <button class="tab" onclick="showTab('checklist')"><i class="fa-solid fa-check-double"></i> Checklist
+                Geral</button>
+            <button class="tab" onclick="showTab('assistente')"><i class="fa-solid fa-brain"></i> Assistente IA</button>
+        </div>
+
+        <div class="content">
+            <!-- ABA PAINEL DE CONTROLE -->
+            <div id="painel" class="tab-content active">
+                <h2 class="section-title">Visão Geral e Metas</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3><i class="fa-solid fa-clock"></i> 24-26h</h3>
+                        <p>Horas de estudo/semana</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fa-solid fa-bullseye"></i> 800+</h3>
+                        <p>Meta ENEM 2026</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fa-solid fa-pen-nib"></i> 960+</h3>
+                        <p>Meta Redação</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3><i class="fa-solid fa-calendar-alt"></i> 10 meses</h3>
+                        <p>Jan-Out 2026</p>
+                    </div>
+                </div>
+
+                <div class="card" data-materia="geral">
+                    <h3><i class="fa-solid fa-chart-line"></i> Resumo do Progresso de Conteúdos</h3>
+                    <div class="progress-summary">
+                        <div id="summary-matematica">Matemática: 0%</div>
+                        <div id="summary-fisica">Física: 0%</div>
+                        <div id="summary-quimica">Química: 0%</div>
+                        <div id="summary-biologia">Biologia: 0%</div>
+                        <div id="summary-historia">História: 0%</div>
+                        <div id="summary-geografia">Geografia: 0%</div>
+                        <div id="summary-portugues">Português: 0%</div>
+                        <div id="summary-literatura">Literatura: 0%</div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Carga Horária Semanal</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dia</th>
+                                <th>Horário</th>
+                                <th>Foco Principal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Segunda</strong></td>
+                                <td>14h-18h (4h)</td>
+                                <td class="tag-matematica">Matemática</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Terça</strong></td>
+                                <td>21h-23h (2h)</td>
+                                <td class="tag-quimica">Química</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quarta</strong></td>
+                                <td>21h-23h (2h)</td>
+                                <td class="tag-fisica">Física</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quinta</strong></td>
+                                <td>21h-23h (2h)</td>
+                                <td class="tag-biologia">Biologia</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sexta</strong></td>
+                                <td>14h-18h (4h)</td>
+                                <td><span class="tag-portugues">Português</span> <span
+                                        class="tag-historia">História</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sábado</strong></td>
+                                <td>8h-12h (4h) + 18h-20h (2h)</td>
+                                <td><span class="tag-redacao">Simulado + Redação</span> <span
+                                        class="tag-revisao">Revisão</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Domingo</strong></td>
+                                <td>Flexível (4-6h)</td>
+                                <td class="tag-literatura">Leituras e Repertório</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ABA CRONOGRAMA SEMANAL -->
+            <div id="semanal" class="tab-content">
+                <h2 class="section-title">Rotina Semanal Detalhada</h2>
+                <div class="card" data-materia="geral">
+                    <h3><i class="fa-solid fa-stopwatch"></i> Timer Pomodoro - Sua Ferramenta Anti-Distração</h3>
+                    <div class="pomodoro-timer">
+                        <div id="timer-display">25:00</div>
+                        <div class="timer-controls">
+                            <button id="start-btn"><i class="fa-solid fa-play"></i> Iniciar Foco</button>
+                            <button id="pause-btn"><i class="fa-solid fa-pause"></i> Pausar</button>
+                            <button id="reset-btn"><i class="fa-solid fa-undo"></i> Resetar</button>
+                        </div>
+                        <div id="pomodoro-status">Modo: Foco (1/4). Celular longe!</div>
+                    </div>
+                </div>
+
+                <div class="week-grid">
+                    <div class="day-card" data-materia="matematica">
+                        <h4><i class="fa-solid fa-calculator"></i> Segunda-feira (4h)</h4>
+                        <div class="time-block"><strong>14h-16h:</strong> Matemática (2 Pomodoros de Foco)</div>
+                        <div class="time-block"><strong>16h-18h:</strong> Lista de Exercícios de Matemática</div>
+                    </div>
+                    <div class="day-card" data-materia="quimica">
+                        <h4><i class="fa-solid fa-flask-vial"></i> Terça-feira (2h)</h4>
+                        <div class="time-block"><strong>21h-23h:</strong> Química (2 Pomodoros de Foco)</div>
+                    </div>
+                    <div class="day-card" data-materia="fisica">
+                        <h4><i class="fa-solid fa-atom"></i> Quarta-feira (2h)</h4>
+                        <div class="time-block"><strong>21h-23h:</strong> Física (2 Pomodoros de Foco)</div>
+                    </div>
+                    <div class="day-card" data-materia="biologia">
+                        <h4><i class="fa-solid fa-dna"></i> Quinta-feira (2h)</h4>
+                        <div class="time-block"><strong>21h-23h:</strong> Biologia (2 Pomodoros de Foco)</div>
+                    </div>
+                    <div class="day-card" data-materia="portugues">
+                        <h4><i class="fa-solid fa-book"></i> Sexta-feira (4h)</h4>
+                        <div class="time-block"><strong>14h-16h:</strong> Português/Literatura (2 Pomodoros)</div>
+                        <div class="time-block"><strong>16h-18h:</strong> História/Geografia (2 Pomodoros)</div>
+                    </div>
+                    <div class="day-card" data-materia="revisao">
+                        <h4><i class="fa-solid fa-brain"></i> Sábado (6h)</h4>
+                        <div class="time-block"><strong>8h-12h:</strong> Simulado (45Q + Redação)</div>
+                        <div class="time-block"><strong>18h-20h:</strong> Correção e Revisão de Erros</div>
+                    </div>
+                    <div class="day-card" data-materia="literatura">
+                        <h4><i class="fa-solid fa-feather-pointed"></i> Domingo (4-6h)</h4>
+                        <div class="time-block">Leitura das obras obrigatórias</div>
+                        <div class="time-block">Construção de repertório (documentários, artigos)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA PROGRESSO POR MATÉRIA -->
+            <div id="progresso" class="tab-content">
+                <h2 class="section-title">Controle de Conteúdos Estudados</h2>
+                <div class="materia-container">
+                    <!-- Gerado dinamicamente pelo JavaScript -->
+                </div>
+            </div>
+
+            <!-- ABA SIMULADOS E REDAÇÕES -->
+            <div id="simulados" class="tab-content">
+                <h2 class="section-title">Registro de Desempenho</h2>
+                <div class="card" data-materia="geral">
+                    <h3><i class="fa-solid fa-plus-circle"></i> Adicionar Novo Registro</h3>
+                    <form id="log-form">
+                        <select id="log-tipo" required>
+                            <option value="redacao">Redação</option>
+                            <option value="simulado">Simulado</option>
+                        </select>
+                        <input type="date" id="log-data" required>
+                        <input type="text" id="log-tema" placeholder="Tema da Redação / Nome do Simulado" required>
+                        <input type="number" id="log-nota" placeholder="Nota / N° de Acertos" required>
+                        <button type="submit">Adicionar</button>
+                    </form>
+                </div>
+
+                <h3 class="subsection-title">Redações</h3>
+                <div class="table-container">
+                    <table id="redacao-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tema</th>
+                                <th>Nota</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Logs de redação aqui --></tbody>
+                    </table>
+                </div>
+
+                <h3 class="subsection-title">Simulados</h3>
+                <div class="table-container">
+                    <table id="simulado-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Simulado</th>
+                                <th>Acertos</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- Logs de simulado aqui --></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ABA LEITURAS -->
+            <div id="leituras" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Leituras e Repertório</h2>
+                <div class="card" data-materia="literatura">
+                    <h3><i class="fa-solid fa-calendar-day"></i> Dezembro 2025 - Aquecimento</h3>
+                    <div class="book-item">
+                        <h4>"Vidas Secas" - Graciliano Ramos</h4>
+                        <p><strong>Temas:</strong> Seca, desigualdade, zoomorfização do homem.</p>
+                    </div>
+                    <div class="book-item">
+                        <h4>"Quarto de Despejo" - Carolina Maria de Jesus</h4>
+                        <p><strong>Temas:</strong> Pobreza, racismo, fome, resiliência.</p>
+                    </div>
+                </div>
+                <div class="card" data-materia="geral">
+                    <h3><i class="fa-solid fa-film"></i> Documentários Essenciais</h3>
+                    <ul>
+                        <li><strong>"O Dilema das Redes"</strong> (Tecnologia e sociedade)</li>
+                        <li><strong>"13ª Emenda"</strong> (Racismo estrutural)</li>
+                        <li><strong>"Ilha das Flores"</strong> (Consumo e desigualdade)</li>
+                        <li><strong>"The True Cost"</strong> (Impacto ambiental da moda)</li>
+                    </ul>
+                </div>
+                <div class="card warning">
+                    <h3><i class="fa-solid fa-exclamation-triangle"></i> ATENÇÃO: Listas Oficiais 2026</h3>
+                    <p>Verifique em Janeiro/2026 nos sites oficiais da <strong>UEM</strong> e <strong>UFPR</strong> as
+                        listas de obras obrigatórias. Elas são sua prioridade máxima de leitura!</p>
+                </div>
+            </div>
+
+            <!-- ABA RECURSOS -->
+            <div id="recursos" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-link"></i> Links e Ferramentas</h2>
+                <p>Aqui estão os melhores recursos gratuitos para te ajudar. Salve nos seus favoritos!</p>
+
+                <div class="recursos-grid">
+                    <div class="card" data-materia="matematica">
+                        <h3><i class="fa-solid fa-calculator"></i> Matemática</h3><a
+                            href="https://www.youtube.com/@professorferretto" target="_blank">Professor Ferretto</a><a
+                            href="https://www.youtube.com/@Equacionamat" target="_blank">Equaciona</a>
+                    </div>
+                    <div class="card" data-materia="quimica">
+                        <h3><i class="fa-solid fa-flask-vial"></i> Química</h3><a
+                            href="https://www.youtube.com/@PauloValim" target="_blank">Paulo Valim</a><a
+                            href="https://www.youtube.com/@QuimicaSimples" target="_blank">Química Simples</a>
+                    </div>
+                    <div class="card" data-materia="fisica">
+                        <h3><i class="fa-solid fa-atom"></i> Física</h3><a
+                            href="https://www.youtube.com/@professorboaro" target="_blank">Professor Boaro</a><a
+                            href="https://www.youtube.com/@FisicaTotal" target="_blank">Física Total</a>
+                    </div>
+                    <div class="card" data-materia="biologia">
+                        <h3><i class="fa-solid fa-dna"></i> Biologia</h3><a href="https://www.youtube.com/@KennedyRamos"
+                            target="_blank">Kennedy Ramos</a><a href="https://www.youtube.com/@BiologiaTotal"
+                            target="_blank">Biologia Total</a>
+                    </div>
+                    <div class="card" data-materia="redacao">
+                        <h3><i class="fa-solid fa-pen-nib"></i> Redação</h3><a
+                            href="https://www.youtube.com/@descomplicaredacao" target="_blank">Descomplica</a><a
+                            href="https://www.youtube.com/@professoralilian" target="_blank">Professora Lilian</a>
+                    </div>
+                    <div class="card" data-materia="historia">
+                        <h3><i class="fa-solid fa-landmark"></i> História</h3><a
+                            href="https://www.youtube.com/@parabolica" target="_blank">Parabólica</a><a
+                            href="https://www.youtube.com/@DeboraaAladim" target="_blank">Débora Aladim</a>
+                    </div>
+                    <div class="card" data-materia="geografia">
+                        <h3><i class="fa-solid fa-globe-americas"></i> Geografia</h3><a
+                            href="https://www.youtube.com/@ClaudioHansen" target="_blank">Claudio Hansen</a><a
+                            href="https://www.youtube.com/@geografiadescomplicada" target="_blank">Geografia Irada</a>
+                    </div>
+                    <div class="card" data-materia="portugues">
+                        <h3><i class="fa-solid fa-book"></i> Português</h3><a
+                            href="https://www.youtube.com/@portuguescomnoslen" target="_blank">Noslen</a><a
+                            href="https://www.youtube.com/@portuguescomleticia" target="_blank">Português com
+                            Letícia</a>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">Bancos de Questões</h3>
+                <div class="card" data-materia="revisao">
+                    <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos"
+                        target="_blank">Provas Antigas ENEM</a>
+                    <a href="http://www.vestibular.uem.br/pas/" target="_blank">Provas Antigas UEM</a>
+                    <a href="https://www.nc.ufpr.br/" target="_blank">Provas Antigas UFPR</a>
+                    <a href="https://www.estudegratis.com.br/" target="_blank">Estuda.com</a>
+                </div>
+            </div>
+
+            <!-- ABA CHECKLIST -->
+            <div id="checklist" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-check-double"></i> Checklist de Ações</h2>
+
+                <div class="card" data-materia="geral">
+                    <h3>🗓️ Dezembro 2025 (Pré-Temporada)</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-dezembro"></div>
+                    </div>
+                    <ul class="checklist" id="checklist-dezembro">
+                        <li>Ler "Vidas Secas" e fazer fichamento</li>
+                        <li>Ler "Quarto de Despejo" e fazer fichamento</li>
+                        <li>Assistir a 2 documentários da lista</li>
+                        <li>Organizar o material de estudo físico (cadernos, canetas)</li>
+                    </ul>
+                </div>
+
+                <div class="card" data-materia="geral">
+                    <h3>📅 Janeiro 2026 (Início Oficial)</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-janeiro"></div>
+                    </div>
+                    <ul class="checklist" id="checklist-janeiro">
+                        <li>Verificar listas de obras da UEM e UFPR</li>
+                        <li>Baixar as últimas 5 provas de cada vestibular</li>
+                        <li>Fazer o primeiro simulado diagnóstico (sem se preocupar com a nota!)</li>
+                        <li>Definir e anotar as metas mensais de acertos</li>
+                    </ul>
+                </div>
+
+                <div class="card" data-materia="revisao">
+                    <h3>💪 Checklist Semanal (Repetir toda semana!)</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-semanal"></div>
+                    </div>
+                    <ul class="checklist" id="checklist-semanal">
+                        <li>Cumpri 80%+ do cronograma?</li>
+                        <li>Fiz e corrigi o simulado de sábado?</li>
+                        <li>Escrevi pelo menos 1 redação?</li>
+                        <li>Revisei os erros da semana?</li>
+                        <li>Mantive o celular longe durante o Pomodoro?</li>
+                    </ul>
+                    <button id="reset-semanal" class="reset-btn">Resetar Checklist Semanal</button>
+                </div>
+            </div>
+            <!-- ABA ASSISTENTE IA -->
+            <div id="assistente" class="tab-content">
+                <h2 class="section-title"><i class="fa-solid fa-brain"></i> Seu Assistente de Estudos Pessoal</h2>
+                <div class="card" data-materia="geral">
+                    <div id="ai-chat-container">
+                        <div id="ai-chat-box">
+                            <!-- As mensagens da IA aparecerão aqui -->
+                            <div class="ai-message bot">Olá! Sou seu assistente de estudos. Como posso te ajudar hoje?
+                                Peça um tema de redação, um resumo sobre um tópico ou tire uma dúvida!</div>
+                        </div>
+                        <div id="ai-loading" style="display: none;">Pensando... <i
+                                class="fa-solid fa-spinner fa-spin"></i></div>
+                        <div id="ai-input-area">
+                            <textarea id="ai-prompt-input"
+                                placeholder="Ex: 'Me dê 5 temas de redação sobre meio ambiente'"></textarea>
+                            <button id="ai-send-btn"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link para o JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,521 @@
+/* ---- VARIÁVEIS DE CORES E FONTES ---- */
+:root {
+    --font-principal: 'Segoe UI', 'Roboto', sans-serif;
+    --cor-primaria: #6d28d9; /* Roxo vibrante */
+    --cor-secundaria: #4f46e5; /* Índigo */
+    --cor-fundo: #f3f4f6; /* Cinza bem claro */
+    --cor-texto: #1f2937; /* Cinza escuro */
+    --cor-branco: #ffffff;
+    --cor-sombra: rgba(0, 0, 0, 0.1);
+
+    /* Cores das Matérias */
+    --cor-matematica: #db2777; /* Pink */
+    --cor-fisica: #ea580c;     /* Laranja */
+    --cor-quimica: #16a34a;    /* Verde */
+    --cor-biologia: #059669;   /* Verde esmeralda */
+    --cor-portugues: #0284c7;  /* Azul céu */
+    --cor-literatura: #7c3aed; /* Roxo */
+    --cor-historia: #ca8a04;   /* Amarelo queimado */
+    --cor-geografia: #c2410c;  /* Laranja terra */
+    --cor-redacao: #be123c;    /* Vermelho */
+    --cor-revisao: #475569;    /* Cinza ardósia */
+    --cor-geral: #4338ca;      /* Índigo escuro */
+}
+
+/* ---- ESTILOS GERAIS ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 2rem auto;
+    background: var(--cor-branco);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--cor-sombra);
+    overflow: hidden;
+}
+
+/* ---- CABEÇALHO ---- */
+.header {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-branco);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.header i {
+    margin-right: 10px;
+}
+
+/* ---- ABAS DE NAVEGAÇÃO ---- */
+.tabs {
+    display: flex;
+    background: #e5e7eb;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE e Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.tabs::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
+
+.tab {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4b5563;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border-bottom: 4px solid transparent;
+}
+
+.tab:hover {
+    background: #d1d5db;
+    color: var(--cor-texto);
+}
+
+.tab.active {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+}
+
+.tab i {
+    margin-right: 8px;
+}
+
+/* ---- CONTEÚDO DAS ABAS ---- */
+.content {
+    padding: 2rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--cor-primaria);
+    font-weight: 700;
+}
+
+.subsection-title {
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ---- CARDS E WIDGETS ---- */
+.card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border-left: 5px solid;
+}
+
+/* Cores dinâmicas para os cards */
+.card[data-materia="matematica"] { border-color: var(--cor-matematica); }
+.card[data-materia="fisica"] { border-color: var(--cor-fisica); }
+.card[data-materia="quimica"] { border-color: var(--cor-quimica); }
+.card[data-materia="biologia"] { border-color: var(--cor-biologia); }
+.card[data-materia="portugues"] { border-color: var(--cor-portugues); }
+.card[data-materia="literatura"] { border-color: var(--cor-literatura); }
+.card[data-materia="historia"] { border-color: var(--cor-historia); }
+.card[data-materia="geografia"] { border-color: var(--cor-geografia); }
+.card[data-materia="redacao"] { border-color: var(--cor-redacao); }
+.card[data-materia="revisao"] { border-color: var(--cor-revisao); }
+.card[data-materia="geral"] { border-color: var(--cor-geral); }
+
+.card.warning {
+    background: #fefce8;
+    border-color: #facc15;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: var(--cor-texto);
+}
+
+.card i {
+    margin-right: 8px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-primaria));
+    color: var(--cor-branco);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--cor-branco);
+}
+
+.stat-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ---- TABELAS ---- */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background: var(--cor-fundo);
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* ---- CHECKLISTS E PROGRESSO ---- */
+.progress-bar-container {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-primaria));
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.checklist {
+    list-style: none;
+}
+
+.checklist li {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background: #f3f4f6;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.checklist li::before {
+    content: "☐";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: "\f0c8"; /* Quadrado vazio */
+    font-size: 1.2rem;
+    color: var(--cor-secundaria);
+    margin-right: 12px;
+    width: 20px; /* Alinhamento */
+}
+
+.checklist li.checked {
+    background: #dcfce7;
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.checklist li.checked::before {
+    content: "\f14a"; /* Quadrado marcado */
+    color: #22c55e;
+}
+
+.reset-btn {
+    background-color: var(--cor-revisao);
+    color: var(--cor-branco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* ---- CRONOGRAMA SEMANAL ---- */
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.day-card {
+    background: var(--cor-branco);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 10px var(--cor-sombra);
+    border-top: 5px solid;
+}
+
+.day-card h4 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.time-block {
+    background: #f3f4f6;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+/* ---- TIMER POMODORO ---- */
+.pomodoro-timer {
+    text-align: center;
+}
+
+#timer-display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.timer-controls button {
+    background: var(--cor-secundaria);
+    color: var(--cor-branco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.timer-controls button:hover {
+    background-color: var(--cor-primaria);
+}
+
+#pomodoro-status {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #6b7280;
+}
+
+/* ---- ABA PROGRESSO ---- */
+.materia-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.topic-list {
+    list-style: none;
+}
+
+.topic-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f9fafb;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.topic-item select {
+    padding: 0.3rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background-color: var(--cor-branco);
+}
+.status-nao-iniciado { background-color: #f9fafb; }
+.status-estudando { background-color: #fef9c3; } /* Amarelo claro */
+.status-concluido { background-color: #dcfce7; } /* Verde claro */
+
+
+/* ---- ABA SIMULADOS ---- */
+#log-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#log-form select, #log-form input {
+    padding: 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex: 1 1 200px;
+}
+
+#log-form button {
+    background: var(--cor-geral);
+    color: var(--cor-branco);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    flex-basis: 100%;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ---- RECURSOS ---- */
+.recursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.recursos-grid .card a {
+    display: block;
+    padding: 0.5rem 1rem;
+    background: var(--cor-secundaria);
+    color: var(--cor-branco);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.recursos-grid .card a:hover {
+    background-color: var(--cor-primaria);
+}
+
+/* ---- RESPONSIVIDADE ---- */
+@media (max-width: 768px) {
+    .header h1 { font-size: 2rem; }
+    .content { padding: 1rem; }
+    .tab { padding: 1rem 0.8rem; font-size: 0.9rem; }
+    #log-form { flex-direction: column; }
+}
+/* ---- ESTILOS DO ASSISTENTE IA ---- */
+#ai-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 60vh; /* Altura do chat */
+}
+
+#ai-chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--cor-branco);
+}
+
+.ai-message {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.ai-message.user {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    margin-left: auto;
+    border-bottom-right-radius: 2px;
+}
+
+.ai-message.bot {
+    background-color: #e5e7eb;
+    color: var(--cor-texto);
+    margin-right: auto;
+    border-bottom-left-radius: 2px;
+}
+
+#ai-loading {
+    text-align: center;
+    padding: 0.5rem;
+    color: #6b7280;
+}
+
+#ai-input-area {
+    display: flex;
+    gap: 1rem;
+}
+
+#ai-prompt-input {
+    flex-grow: 1;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-family: var(--font-principal);
+    resize: none;
+}
+
+#ai-send-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+#ai-send-btn:hover {
+    background-color: var(--cor-secundaria);
+}
