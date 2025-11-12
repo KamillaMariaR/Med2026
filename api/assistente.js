@@ -1,49 +1,51 @@
-// CÓDIGO DE INVESTIGAÇÃO: LISTAR MODELOS DISPONÍVEIS
+// Importa a biblioteca oficial do Google
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+// MODELO ATUALIZADO - Use um destes modelos válidos:
+// "gemini-1.5-flash" (rápido e eficiente)
+// "gemini-1.5-pro" (mais poderoso)
+const modelName = "gemini-1.5-flash";
+
 export default async function handler(request, response) {
+  // Apenas permitir requisições do tipo POST
+  if (request.method !== 'POST') {
+    return response.status(405).json({ message: 'Método não permitido' });
+  }
+
+  // Pegar a pergunta do usuário que veio do front-end
+  const { prompt } = request.body;
+  if (!prompt) {
+    return response.status(400).json({ message: 'Prompt é obrigatório' });
+  }
+
   try {
-    const credentials = {
-      type: "service_account",
-      project_id: process.env.GOOGLE_PROJECT_ID,
-      private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      auth_uri: "https://accounts.google.com/o/oauth2/auth",
-      token_uri: "https://oauth2.googleapis.com/token",
-      auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-      client_x509_cert_url: process.env.GOOGLE_CLIENT_X509_CERT_URL
-    };
+    // Pega a API Key das variáveis de ambiente
+    const apiKey = process.env.GOOGLE_API_KEY;
     
-    const genAI = new GoogleGenerativeAI(credentials);
+    if (!apiKey) {
+      throw new Error('API Key não configurada.');
+    }
     
-    // ATENÇÃO: A URL para listar modelos é diferente!
-    const listModelsUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${credentials.private_key_id}`; // Usando uma parte da credencial como chave temporária para o request
-    
-    // Este código abaixo usa a API REST diretamente, pois a biblioteca do Google não facilita listar modelos com conta de serviço
-    const googleResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Autenticação com conta de serviço é mais complexa, mas vamos tentar sem token primeiro
-        // Se não funcionar, o erro nos dirá o que fazer
-      },
-    });
+    // Inicializa a IA
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: modelName });
 
-    // Precisamos de um token de acesso para a API
-    // Por simplicidade, vamos retornar uma mensagem guiando o próximo passo
-    // A autenticação OAuth2 é necessária para listar modelos.
+    // Prepara a pergunta para a IA, com o contexto de tutor
+    const fullPrompt = `Você é um tutor especialista em vestibulares de Medicina no Brasil (ENEM, UEM, UFPR). Responda a pergunta do estudante de forma clara, didática e motivadora. Pergunta: "${prompt}"`;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const result = await model.generateContent("Teste");
-    
-    // Se o código chegou aqui, o modelo 'gemini-pro' existe!
-    return response.status(200).json({ response: "SUCESSO! O modelo 'gemini-pro' foi encontrado e funcionou." });
+    // Gera o conteúdo
+    const result = await model.generateContent(fullPrompt);
+    const aiResponse = await result.response;
+    const aiResponseText = aiResponse.text();
+
+    // Envia a resposta de volta para o front-end
+    return response.status(200).json({ response: aiResponseText });
 
   } catch (error) {
-    console.error('Erro de investigação:', error);
-    // Retorna o erro exato para o front-end para podermos ver
-    return response.status(500).json({ response: `ERRO DE INVESTIGAÇÃO: ${error.message}` });
+    console.error('Erro na serverless function:', error);
+    return response.status(500).json({ 
+      message: 'Erro ao comunicar com a IA.',
+      error: error.message 
+    });
   }
 }
